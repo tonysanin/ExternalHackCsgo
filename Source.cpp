@@ -15,6 +15,15 @@ struct values
 	BYTE flag;
 } val;
 
+//Что активировано
+struct software
+{
+	bool bhop;
+	bool glowESP;
+	bool noFlash;
+	bool radarhack;
+} cheats;
+
 
 void BunnyHop() {
 	//Обновляем адрес игрока
@@ -31,6 +40,17 @@ void BunnyHop() {
 				MemClass.writeMem<DWORD>(val.gameModule + hazedumper::signatures::dwForceJump, 6);
 		}
 	}
+}
+
+void noFlash()
+{
+	Sleep(1);
+	if (!cheats.noFlash)
+		return;
+	DWORD lp = MemClass.readMem<DWORD>(val.gameModule + hazedumper::signatures::dwLocalPlayer);
+	int flashDuration = MemClass.readMem<int>(lp + hazedumper::netvars::m_flFlashDuration);
+	if (flashDuration > 0)
+		MemClass.writeMem<int>(lp + hazedumper::netvars::m_flFlashDuration, 0);
 }
 
 
