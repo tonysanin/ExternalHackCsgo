@@ -5,3 +5,6 @@ You can get actual offsets here : https://github.com/frk1/hazedumper/blob/master
 
 Functions : 
 BunnyHop (F11)
+GlowESP (F12)
+NoFlash (F9)
+RadarHack (F8)
